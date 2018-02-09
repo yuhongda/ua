@@ -1,2 +1,2 @@
-﻿import #{pageName}#Store from './#{pageName}#Store'
+import #{pageName}#Store from './#{pageName}#Store'
 //{importStore}//

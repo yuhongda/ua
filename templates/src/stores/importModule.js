@@ -1,2 +1,2 @@
-﻿#{pageName}#: #{pageName}#Store,
+#{pageName}#: #{pageName}#Store,
 //{importModule}// 
