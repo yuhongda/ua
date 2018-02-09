@@ -9,11 +9,13 @@ export function routerConfig(router, store){
         
         const Page1 = resolve => require.ensure(['./src/pages/Page1.vue'], () => resolve(require('./src/pages/Page1.vue')), 'page1')
         const Page2 = resolve => require.ensure(['./src/pages/Page2.vue'], () => resolve(require('./src/pages/Page2.vue')), 'page2')
+        //{importPage}//
 
         const routes = [
             { path: '/', component: Page1, name: 'page1' },
             { path: '/page1', component: Page1, name: 'page1' },
             { path: '/page2', component: Page2, name: 'page2' },
+            //{importRoute}//
             { path: '*', redirect: '/' }
         ]
 

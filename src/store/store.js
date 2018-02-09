@@ -6,6 +6,7 @@ import {
     Message
 } from 'element-ui'
 import page1Store from './page1Store'
+//{importStore}//
 
 Vue.use(Vuex)
 
@@ -103,7 +104,8 @@ const store = new Vuex.Store({
         }
     },
     modules:{
-        page1: page1Store
+        page1: page1Store,
+        //{importModule}// 
     }
 })
 

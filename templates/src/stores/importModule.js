@@ -1,0 +1,2 @@
+﻿#{pageName}#: #{pageName}#Store,
+//{importModule}// 

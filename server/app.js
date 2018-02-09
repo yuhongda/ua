@@ -35,6 +35,7 @@ app.all('*', function(req, res, next) {
 
 const priceQuery = require('./routes/purchasePrice/priceQuery');
 app.use('/vcs', priceQuery);
+//{pages}//
 
 const { resultData } = require('./common/utils');
 
