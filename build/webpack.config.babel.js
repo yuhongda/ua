@@ -13,7 +13,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: {
-        app: ['./build/dev-client', './app.js'],
+        app: process.env.NODE_ENV === 'production' ? ['./app.js'] : ['./build/dev-client', './app.js'],
         vendor:['vue', 'vue-router', 'vuex']
     },
     output: {
@@ -153,7 +153,6 @@ module.exports.plugins = [
             collapseWhitespace: false
         }
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
         filename:'index.html',
@@ -210,5 +209,8 @@ if (process.env.NODE_ENV === 'production') {
         new webpack.optimize.OccurrenceOrderPlugin()
     ]);
 } else {
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new webpack.HotModuleReplacementPlugin()
+    ]);
     module.exports.devtool = '#cheap-module-eval-source-map'
 }
