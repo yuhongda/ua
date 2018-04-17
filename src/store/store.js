@@ -1,10 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import moment from 'moment';
-import { fetchUserinfo, fetchSystemMenu } from '../js/api'
-import { 
-    Message
-} from 'element-ui'
+// import { fetchUserinfo } from '../js/api'
+
 import page1Store from './page1Store'
 //{importStore}//
 
@@ -14,19 +11,14 @@ const store = new Vuex.Store({
     state:{
         userinfo:{},
         permission:true,
-        menuData:[],
-        currentPage: '/'
+
+        isShowLoading: false,
+        loadingType: 1,
+        //首页是否加载完成
+        isHomePageMounted: false,
     },
     getters: {
-        mapData(state) {
-            if(state.switchValue == '1'){
-                //中小件
-                return state.mapDataBase[1];
-            } else {
-                //全部|大件
-                return state.mapDataBase[0];
-            }
-        }
+        
     },
     mutations:{
         setUserinfo(state, data){
@@ -35,11 +27,12 @@ const store = new Vuex.Store({
         setUserPermission(state, value){
             state.permission = value
         },
-        setSystemMenu(state, data){
-            state.menuData = data
+
+        setIsShowLoading(state, value){
+            state.isShowLoading = value
         },
-        setCurrentPage(state, value){
-            state.currentPage = value
+        setIsHomePageMounted(state, value){
+            state.isHomePageMounted = value
         }
     },
     actions:{
@@ -53,18 +46,6 @@ const store = new Vuex.Store({
                 .subscribe(result => {
                     if(result.success){
                         commit('setUserinfo', result.data);
-                    }
-                });
-        },
-        /**
-         * 获取系统菜单
-         * @param {*} param0 
-         */
-        getSystemMenu({commit}){
-            fetchSystemMenu()
-                .subscribe(result => {
-                    if(result.success){
-                        commit('setSystemMenu', result.data);
                     }
                 });
         },
@@ -99,8 +80,12 @@ const store = new Vuex.Store({
         setUserPermission({commit}, value){
             commit('setUserPermission', value)
         },
-        setCurrentPage({commit}, value){
-            commit('setCurrentPage', value)
+
+        setIsHomePageMounted({commit}, value){
+            commit('setIsHomePageMounted', value)
+        },
+        setIsShowLoading({commit}, value){
+            commit('setIsShowLoading', value)
         }
     },
     modules:{

@@ -14,7 +14,7 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
     entry: {
         app: process.env.NODE_ENV === 'production' ? ['./app.js'] : ['./build/dev-client', './app.js'],
-        vendor:['vue', 'vue-router', 'vuex']
+        vendor:['vue', 'vue-router', 'vuex', 'vue-lazyload', 'vue-awesome-swiper']
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -80,8 +80,8 @@ module.exports = {
                 test: /\.(jpeg|jpg|png|gif)$/i,
                 use: [
                     process.env.NODE_ENV === 'production'
-                        ? `url-loader?limit=10000&name=${ path.posix.join(config.build.assetsSubDirectory, 'images/[name].[ext]?[hash]') }`
-                        : `url-loader?limit=10000&name=${ path.posix.join(config.dev.assetsSubDirectory, 'images/[name].[ext]?[hash]') }`,
+                        ? `url-loader?limit=10000&name=${ path.posix.join(config.build.assetsSubDirectory, 'images/[name].[ext]') }`
+                        : `url-loader?limit=10000&name=${ path.posix.join(config.dev.assetsSubDirectory, 'images/[name].[ext]') }`,
                     {
                         loader: 'img-loader',
                         options: {

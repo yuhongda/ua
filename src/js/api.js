@@ -15,17 +15,6 @@ export function fetchUserinfo() {
     }).promise())
 }
 
-/**
- * 获取系统菜单
- */
-export function fetchSystemMenu() {
-    return Rx.Observable.fromPromise($.ajax({
-        url: `${host}/api/getSystemMenu`,
-        dataType: 'json',
-        type: 'get',
-        cache: false
-    }).promise())
-}
 
 /**
  * 登录
