@@ -42,11 +42,7 @@
             50%{background-position:78% 100%}
             100%{background-position:23% 0%}
         }
-        .loading{width:2.92rem;height:7.13rem;position:absolute;top:50%;left:50%;margin-top:-3.57rem;margin-left:-1.46rem;background:url(./static/images/loading.png) no-repeat;background-size:cover;z-index:2;}
-        .loading-bg{
-            width:2.92rem;height:7.13rem;position:absolute;top:50%;left:50%;margin-top:-3.57rem;margin-left:-1.46rem;background:url(./static/images/loading.png) no-repeat;background-size:cover;z-index:1;opacity:.2;
-            animation: bg 1s linear infinite;-webkit-animation:bg 1s linear infinite;-moz-animation:bg 1s linear infinite;-ms-animation:bg 1s linear infinite;
-        }
+        .loading{width:3.67rem;height:2.11rem;position:absolute;top:31.5%;left:50%;margin-left:-1.835rem;background:url(./static/images/loading.png) no-repeat;background-size:cover;z-index:2;}
         @-webkit-keyframes bg {
             50% { -webkit-transform: scale(1.1); }
             90% { -webkit-transform: scale(1.2);opacity:0; }
@@ -90,6 +86,37 @@
             .portrait-notice img { width:.7rem; }
             .portrait-notice p { font-size:.2rem;margin-top:20px; }
         }
+
+
+        .spinner {
+            width: 1rem;
+            height: 1rem;
+            position:absolute;bottom:10%;left:50%;margin-left:-.5rem;
+            background-color: #333;
+
+            border-radius: 100%;  
+            -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+            animation: sk-scaleout 1.0s infinite ease-in-out;
+        }
+
+        @-webkit-keyframes sk-scaleout {
+            0% { -webkit-transform: scale(0) }
+            100% {
+                -webkit-transform: scale(1.0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sk-scaleout {
+            0% { 
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            } 100% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+                opacity: 0;
+            }
+        }
     </style>
     <script>
     var _hmt = _hmt || [];
@@ -101,22 +128,19 @@
     })();
     </script>
             
-<link href="./static/css/app.20180126.css" rel="stylesheet"></head>
+<link href="./static/css/app.201804211730.css" rel="stylesheet"></head>
 
 <body>
-
-    <div id="app" style="height: 100%;position: relative;">
-        <app />
-    </div>
     <div class="loading-wrap" id="loading">
-        <div class="inner">
-            <div class="loading"></div>
-            <div class="loading-bg"></div>
-        </div>
+        <div class="loading"></div>
+        <div class="spinner"></div>
     </div>
     <div class="portrait-notice">
         <img src="./static/images/iphone.png" />
         <p>为了更好的体验，请使用竖屏浏览。</p>
+    </div>
+    <div id="app" style="height: 100%;position: relative;">
+        <app />
     </div>
     <script src="./static/js/libs/jquery-3.1.1.min.js"></script>
     <script src="./static/js/libs/babelHelpers.min.js"></script>
@@ -124,9 +148,9 @@
     <script src="./static/js/libs/wechat-share.js"></script>
     <script>
         window.WechatShare({
-            shareTitle: 'Under Armour' || window.document.title,
+            shareTitle: '2018夏季新品手册' || window.document.title,
             shareLink: window.location.href,
-            shareDesc: 'HOVR 怼上地心引力' || window.document.URL,
+            shareDesc: '',
             shareImg: 'http://www.manalife.cn/ua/static/images/wx-share.png'
         });
 
@@ -136,5 +160,5 @@
             }
         }
     </script>
-<script type="text/javascript" src="./static/js/vendors.min.js"></script><script type="text/javascript" src="./static/js/app.20180126.js"></script></body>
+<script type="text/javascript" src="./static/js/vendors.min.js"></script><script type="text/javascript" src="./static/js/app.201804211730.js"></script></body>
 </html>

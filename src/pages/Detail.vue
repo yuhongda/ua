@@ -2,27 +2,32 @@
     @import '../css/common.scss';
 
     .page-wrap{
-        position: absolute; width: 100%; min-height: 100%; top:0; left:0;
+        position: absolute; width: 100%; min-height: 100%; top:0; left:0;background-position: 50% 50%;background-repeat: no-repeat;background-size: cover;
         .logo{
-            position: absolute;width:rem(128);height:rem(75);top:rem(59);right:rem(31);background: url(../images/logo-black.png) 50% 50% no-repeat;background-size: cover;z-index:100;
+            position: absolute;width:rem(128);height:rem(75);top:rem(45);right:rem(31);background: url(../images/logo-black.png) 50% 50% no-repeat;background-size: cover;z-index:100;
         }
         .detail-header{
-            height: rem(127);padding-top:rem(20);
+            height: rem(127);padding-top:rem(20);background:#fff;
             .close{
-                float:left;width:rem(127);height:rem(127);background:url(../images/icon-close.png) 50% 50% no-repeat;background-size:rem(45) rem(42);
+                float:left;width:rem(127);height:rem(127);background:url(../images/icon-close-black.png) 50% 50% no-repeat;background-size:rem(45) rem(42);
             }
         }
         .swiper-wrap{
-            height: rem(1000);position: relative;
-            .swiper-button-next{outline: none;}
-            .swiper-button-prev{outline: none;}
+            position: relative;
+            .swiper-button-next{outline: none;
+                background:url(../images/next.png) 50% 50% no-repeat;background-size:cover;
+                right:rem(20);
+                height: rem(43); width: rem(24);
+            }
+            .swiper-button-prev{outline: none;
+                left:rem(20);            
+                background:url(../images/prev.png) 50% 50% no-repeat;background-size:cover;
+                height: rem(43); width: rem(24);
+            }
         }
         .swiper-container{
-            height: 100%;
             .swiper-wrapper {
-                height: 100%;
                 .swiper-slide{
-                    height: 100%;
                     display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;
                     justify-content: center; align-items: center;
                     img{width:100%;}
@@ -75,7 +80,7 @@
 </style>
 
 <template>
-    <div class="page-wrap">
+    <div class="page-wrap" :style="{backgroundImage: `url(./static/images/detail-bg-${this.gender}-${this.category}.jpg)`}">
         <div class="logo"></div>
         <div class="detail-header">
             <span class="close" @click="close"></span>
@@ -86,8 +91,8 @@
                     <img :src="item.pic" alt="" />
                 </swiper-slide>
             </swiper>
-            <!-- <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div> -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
         <ul :class="{'product-list':true,'product-list-running': category == 'running','product-list-sport': category == 'sport','product-list-training': category == 'training'}">
             <li v-for="(item, key) in detailData[currentSlider].links" :key="key" :class="{anim: !isHide}">
@@ -121,8 +126,9 @@
                 swiperOption: {
                     parallax: false,
                     speed: 1000,
+                    autoHeight:true,
                     autoplay: {
-                        delay: 7000,
+                        delay: 15000,
                         disableOnInteraction: false,
                         stopOnLastSlide: true
                     },

@@ -23,6 +23,13 @@
         font-style: normal
     }
 
+    @font-face {
+        font-family: ARMOUR_W_MdIt;
+        src: url('./src/fonts/ARMOUR_W_MdIt.ttf') format("truetype");
+        font-weight: 200;
+        font-style: normal
+    }
+
     @media only screen and (-webkit-min-device-pixel-ratio: 2){html{-webkit-text-size-adjust:none}}
     body,div,p,h1,h2,h3,h4,h5,h6,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,table,th,td{margin:0;padding:0;}address,cite,em,i{font-style:normal;}li{list-style:none;}a{text-decoration:none;}a:hover{text-decoration:underline;}legend{color:#000;}fieldset,img{border:0;}table{border-collapse:collapse;border-spacing:0;}
     html, body{height: 100%;}
@@ -88,7 +95,7 @@
         </transition>
         <transition name="fade">
             <div v-show="!isShowLoading" class="transition-wrap">
-                <transition name="slide-fade">
+                <transition name="fade">
                     <router-view></router-view>
                 </transition>
             </div>

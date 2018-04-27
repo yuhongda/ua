@@ -12,30 +12,30 @@
     .nav-wrap{
         position: fixed;width: 0;height: 100%; top:0; left:100%; z-index: 100;background: #fff;
         .trigger{
-            position: absolute;top:rem(200);left:rem(-50);width:rem(50);height: rem(150);padding-left:rem(38);
-            li{width:rem(50);height:rem(47);box-shadow: 0 0 8px rgba(0,0,0,.3)}
-            .item-1{background:#F5D750;animation: triggerItem 5s ease-out infinite;}
-            .item-2{background:#ED7666;animation: triggerItem 5s ease-out infinite .2s;}
-            .item-3{background:#54B8D9;animation: triggerItem 5s ease-out infinite .4s;}
+            position: absolute;top:rem(185);right:0;width:rem(192);height: rem(185);background-repeat:no-repeat;background-size:cover;
         }
         .nav{
-            position: absolute;top:0;left: rem(-154);width: rem(154);background:#fff;padding-left:7px;font-size:rem(22);
-            .go-home{width:rem(153); height:rem(61); padding-top:rem(110);text-align:center;font-size:rem(22); border-left:1px solid #000;border-bottom:1px solid #000;background:url(../../images/icon-home.png) 50% 45%;background-size: rem(46) rem(40); background-repeat:no-repeat;}
-            .go-shop{width:rem(153); height:rem(61); padding-top:rem(110);text-align:center;font-size:rem(22); border-top:1px solid #000;border-left:1px solid #000;border-bottom:1px solid #000;background:url(../../images/icon-shop.png) 50% 45%;background-size: rem(43) rem(41); background-repeat:no-repeat;}
-            .close{width:rem(153); height:rem(171); text-align:center;font-size:rem(22); border-left:1px solid #000;border-bottom:1px solid #000;background:url(../../images/icon-close.png) 50% 45%;background-size: rem(45) rem(42); background-repeat:no-repeat;}
+            a{display:inline-block;color:#fff;float:left;}
+            position: absolute;top:rem(185);left: rem(-178);width: rem(178);height:100%; background:#fff;font-size:rem(22);
+            .go-home{width:rem(178); height:rem(61); padding-top:rem(110);text-align:center;font-size:rem(22); border-left:1px solid #fff;border-bottom:1px solid #fff;background:url(../../images/icon-home.png) 50% 45%;background-size: rem(46) rem(40); background-repeat:no-repeat;}
+            .go-shop{width:rem(178); height:rem(61); padding-top:rem(110);text-align:center;font-size:rem(22); border-top:1px solid #fff;border-left:1px solid #fff;border-bottom:1px solid #fff;background:url(../../images/icon-shop.png) 50% 45%;background-size: rem(43) rem(41); background-repeat:no-repeat;}
+            .close{width:rem(178); height:rem(171); text-align:center;font-size:rem(22); border-left:1px solid #fff;border-bottom:1px solid #fff;background:url(../../images/icon-close.png) 50% 45%;background-size: rem(45) rem(42); background-repeat:no-repeat;}
             .nav-training{
-                width:rem(141); height:rem(171);border-left:rem(12) solid #f3d454;
-                div{writing-mode: vertical-lr;transform: rotate(180deg);float: right; width: rem(64);height:rem(168);text-align:center;line-height:rem(70);border-top:1px solid #000;}
+                width:rem(166); height:rem(171);border-left:rem(12) solid #f3d454;position:relative;
+                div{position:absolute;top:0;right:0;transform: rotate(-90deg) translateY(rem(-95));transform-origin: 100% 0%;width: rem(148);height:rem(95);text-align:left;font-family: ARMOUR_W_MdIt;border-left:1px solid #fff;padding-left:rem(20);}
             }
             .nav-running{
-                width:rem(141); height:rem(171);border-left:rem(12) solid #df6737;
-                div{writing-mode: vertical-lr;transform: rotate(180deg);float: right; width: rem(64);height:rem(168);text-align:center;line-height:rem(70);border-top:1px solid #000;}
+                width:rem(166); height:rem(171);border-left:rem(12) solid #df6737;position:relative;
+                div{position:absolute;top:0;right:0;transform: rotate(-90deg) translateY(rem(-95));transform-origin: 100% 0%;width: rem(148);height:rem(95);text-align:left;font-family: ARMOUR_W_MdIt;border-left:1px solid #fff;padding-left:rem(20);}
             }
             .nav-sport{
-                width:rem(141); height:rem(171);border-left:rem(12) solid #70c9e1;
-                div{writing-mode: vertical-lr;transform: rotate(180deg);float: right; width: rem(64);height:rem(168);text-align:center;line-height:rem(70);}
+                width:rem(166); height:rem(171);border-left:rem(12) solid #70c9e1;position:relative;
+                div{position:absolute;top:0;right:0;transform: rotate(-90deg) translateY(rem(-95));transform-origin: 100% 0%;width: rem(150);height:rem(95);text-align:left;font-family: ARMOUR_W_MdIt;}
             }
         }
+        .nav-bg-running{background:#ed7667;}
+        .nav-bg-sport{background:#70c9e1;}
+        .nav-bg-training{background:#f6d751;}
     }
     .slide-away-enter-active {
         transition: all .5s ease-out;
@@ -80,24 +80,31 @@
 <template>
     <div class="nav-wrap">
         <transition name="slide-away" mode="out-in">        
-            <ul class="trigger" v-show="!isShowNav" @click="show">
-                <li v-for="n in 3" :key="n" :class="`item-${n}`"></li>
-            </ul>
+            <div class="trigger" v-show="!isShowNav" @click="show" :style="{backgroundImage:`url(./static/images/nav-${category}.png)`}"></div>
         </transition>
         <transition name="slide-away" mode="out-in">                
-            <div class="nav" v-if="isShowNav">
-                <router-link tag="div" class="go-home" :to="{ path: '/Home' }">HOME</router-link>
-                <router-link tag="div" class="nav-training" :to="{ path: '/Gallery', query: { gender, category: 'training' }}">
-                    <div>training</div>
+            <div :class="{'nav':true, 'nav-bg-running': category=='running', 'nav-bg-sport': category=='sport', 'nav-bg-training': category=='training'}" v-if="isShowNav">
+                <router-link tag="a" class="go-home" :to="{ path: '/Home' }">HOME</router-link>
+                <router-link tag="a" class="nav-training" :to="{ path: '/Gallery', query: { gender, category: 'training' }}">
+                    <div>
+                        <p>training</p>
+                        <p>训练</p>
+                    </div>
                 </router-link>
-                <router-link tag="div" class="nav-running" :to="{ path: '/Gallery', query: { gender, category: 'running' }}">
-                    <div>running</div>
+                <router-link tag="a" class="nav-running" :to="{ path: '/Gallery', query: { gender, category: 'running' }}">
+                    <div>
+                        <p>running</p>
+                        <p>跑步</p>
+                    </div>
                 </router-link>
-                <router-link tag="div" class="nav-sport" :to="{ path: '/Gallery', query: { gender, category: 'sport' }}">
-                    <div>sportstyle</div>
+                <router-link tag="a" class="nav-sport" :to="{ path: '/Gallery', query: { gender, category: 'sport' }}">
+                    <div>
+                        <p>sportstyle</p>
+                        <p>运动休闲</p>
+                    </div>
                 </router-link>
-                <div class="go-shop" @click="goShop">SHOP</div>
-                <div class="close" @click="close"></div>
+                <a class="go-shop" @click="goShop">SHOP</a>
+                <a class="close" @click="close"></a>
             </div>
         </transition>
     </div>
@@ -109,7 +116,7 @@
     // import 'vue-awesome/icons/times'
 
     export default{
-        props: ['gender'],
+        props: ['gender', 'category'],
         components:{
             // Icon
         },

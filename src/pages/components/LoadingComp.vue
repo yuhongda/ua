@@ -35,10 +35,7 @@
                 50%{background-position:100% 50%}
                 100%{background-position:0% 50%}
             }
-            .loading{width:rem(219);height:rem(535);position:absolute;top:50%;left:50%;margin-top:rem(-267.5);margin-left:rem(-109.5);background:url(../../images/loading.png) no-repeat;background-size:cover;z-index:2;}
-            .loading-bg{width:rem(219);height:rem(535);position:absolute;top:50%;left:50%;margin-top:rem(-267.5);margin-left:rem(-109.5);background:url(../../images/loading.png) no-repeat;background-size:cover;z-index:1;opacity:.2;
-                animation: bg 1s linear infinite;
-            }
+            .loading{width:rem(275);height:rem(158);position:absolute;top:31.5%;left:50%;margin-left:rem(-275);background:url(../../images/loading.png) no-repeat;background-size:cover;z-index:2;}
         }
         
     }
@@ -67,14 +64,42 @@
         100% { -moz-transform: scale(1.3); -ms-transform: scale(1.3); -o-transform: scale(1.3); -webkit-transform: scale(1.3); transform: scale(1.3);opacity:0; }
     }
 
+
+    .spinner {
+        width: 1rem;
+        height: 1rem;
+        position:absolute;bottom:10%;left:50%;margin-left:-.5rem;
+        background-color: #333;
+
+        border-radius: 100%;  
+        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes sk-scaleout {
+        0% { -webkit-transform: scale(0) }
+        100% {
+            -webkit-transform: scale(1.0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes sk-scaleout {
+        0% { 
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        } 100% {
+            -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+            opacity: 0;
+        }
+    }
 </style>
 
 <template>
     <div class="loading-wrap">
-        <div class="inner">
-            <div class="loading"></div>
-            <div class="loading-bg"></div>
-        </div>
+        <div class="loading"></div>
+        <div class="spinner"></div>
     </div>
 </template>
 

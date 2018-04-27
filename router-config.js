@@ -55,36 +55,49 @@ export function routerConfig(router, store){
                 switch (to.name) {
                     case 'home':
                         loadingImages([
-                            './static/images/home-men-running-frame.png',
+                            './static/images/home-running-frame-top.png',
+                            './static/images/home-running-frame-bottom.png',
                             './static/images/home-men-running-pic.jpg',
-                            './static/images/home-women-running-frame.png',
                             './static/images/home-women-running-pic.jpg',
-                            './static/images/home-men-sport-frame.png',
+                            './static/images/home-sport-frame-top.png',
+                            './static/images/home-sport-frame-bottom.png',
                             './static/images/home-men-sport-pic.jpg',
-                            './static/images/home-women-sport-frame.png',
                             './static/images/home-women-sport-pic.jpg',
-                            './static/images/home-men-training-frame.png',
+                            './static/images/home-training-frame-top.png',
+                            './static/images/home-training-frame-bottom.png',
                             './static/images/home-men-training-pic.jpg',
-                            './static/images/home-women-training-frame.png',
                             './static/images/home-women-training-pic.jpg',
                         ], () => {
                             next()
                         })
                         break;
                     case 'category':
+                        // loadingImages([
+                        //     './static/images/category-men-running-frame.png',
+                        //     './static/images/category-men-running-pic.jpg',
+                        //     // './static/images/home-men-sport-frame.png',
+                        //     // './static/images/home-men-sport-pic.jpg',
+                        //     './static/images/category-men-training-frame.png',
+                        //     './static/images/category-men-training-pic.jpg',
+                        //     './static/images/category-women-running-frame.png',
+                        //     './static/images/category-women-running-pic.jpg',
+                        //     './static/images/category-women-sport-frame.png',
+                        //     './static/images/category-women-sport-pic.jpg',
+                        //     // './static/images/home-women-training-frame.png',
+                        //     // './static/images/home-women-training-pic.jpg',
+                        // ], () => {
+                        //     next()
+                        // })
+                        next()
+                        break;
+                    case 'detail':
                         loadingImages([
-                            './static/images/category-men-running-frame.png',
-                            './static/images/category-men-running-pic.jpg',
-                            // './static/images/home-men-sport-frame.png',
-                            // './static/images/home-men-sport-pic.jpg',
-                            './static/images/category-men-training-frame.png',
-                            './static/images/category-men-training-pic.jpg',
-                            './static/images/category-women-running-frame.png',
-                            './static/images/category-women-running-pic.jpg',
-                            './static/images/category-women-sport-frame.png',
-                            './static/images/category-women-sport-pic.jpg',
-                            // './static/images/home-women-training-frame.png',
-                            // './static/images/home-women-training-pic.jpg',
+                            './static/images/detail-bg-men-running.jpg',
+                            './static/images/detail-bg-men-sport.jpg',
+                            './static/images/detail-bg-men-training.jpg',
+                            './static/images/detail-bg-women-running.jpg',
+                            './static/images/detail-bg-women-sport.jpg',
+                            './static/images/detail-bg-women-training.jpg',
                         ], () => {
                             next()
                         })

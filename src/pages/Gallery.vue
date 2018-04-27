@@ -4,7 +4,7 @@
     .page-wrap{
         position: absolute; width: 100%; min-height: 100%; top:0; left:0;
         .logo{
-            position: absolute;width:rem(128);height:rem(75);top:rem(59);right:rem(31);background: url(../images/logo-black.png) 50% 50% no-repeat;background-size: cover;z-index:100;
+            position: absolute;width:rem(128);height:rem(75);top:rem(45);right:rem(31);background: url(../images/logo-black.png) 50% 50% no-repeat;background-size: cover;z-index:100;
         }
         .gallery-header{
             height: rem(127);padding-top:rem(20);
@@ -101,21 +101,26 @@
             <!-- men running -->
             <table v-if="gender == 'men' && category == 'running'">
                 <tr>
-                    <td :style="{height:rem(341),width:'32%'}">
+                    <th style="width:8%"></th>
+                    <th style="width:21.7%"></th>
+                    <th style="width:30%"></th>
+                </tr>
+                <tr>
+                    <td :style="{height:rem(341)}" colspan="2">
                         <router-link tag="div" class="block" v-lazy:background-image="galleryDataMenRunning[0]" :to="{ path: '/Detail', query: { gender, category, index: 1 }}">
                         </router-link>
                     </td>
-                    <td :style="{height:rem(341),width:'32%'}">
+                    <td :style="{height:rem(341)}">
                         <router-link tag="div" class="block" v-lazy:background-image="galleryDataMenRunning[1]" :to="{ path: '/Detail', query: { gender, category, index: 2 }}">
                         </router-link>
                     </td>
-                    <td :style="{height:rem(341),width:'36%'}">
+                    <td :style="{height:rem(341)}">
                         <router-link tag="div" class="block" v-lazy:background-image="galleryDataMenRunning[2]" :to="{ path: '/Detail', query: { gender, category, index: 3 }}">
                         </router-link>
                     </td>
                 </tr>
                 <tr>
-                    <td :style="{height:rem(459)}" rowspan="2">
+                    <td :style="{height:rem(459)}" rowspan="2" colspan="2">
                         <router-link tag="div" class="block" v-lazy:background-image="galleryDataMenRunning[3]" :to="{ path: '/Detail', query: { gender, category, index: 4 }}">
                         </router-link>
                     </td>
@@ -137,8 +142,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td :style="{height:rem(300)}" colspan="2">
+                    <td :style="{height:rem(300)}" colspan="3">
                         <router-link tag="div" class="block" v-lazy:background-image="galleryDataMenRunning[6]" :to="{ path: '/Detail', query: { gender, category, index: 8 }}">
+                        </router-link>
+                    </td>
+                </tr>
+                <tr>
+                    <td :style="{height:rem(314)}">
+                    </td>
+                    <td :style="{height:rem(314)}" colspan="2">
+                        <router-link tag="div" class="block" v-lazy:background-image="galleryDataMenRunning[8]" :to="{ path: '/Detail', query: { gender, category, index: 9 }}">
+                        </router-link>
+                    </td>
+                    <td :style="{height:rem(314)}">
+                        <router-link tag="div" class="block" v-lazy:background-image="galleryDataMenRunning[9]" :to="{ path: '/Detail', query: { gender, category, index: 10 }}">
                         </router-link>
                     </td>
                 </tr>
@@ -482,6 +499,8 @@
                     './static/images/gallery-men-running-6.jpg',
                     './static/images/gallery-men-running-7.jpg',
                     './static/images/gallery-men-running-8.jpg',
+                    './static/images/gallery-men-running-9.jpg',
+                    './static/images/gallery-men-running-10.jpg',
                 ],
                 galleryDataWomenRunning: [
                     './static/images/gallery-women-running-1.jpg',
